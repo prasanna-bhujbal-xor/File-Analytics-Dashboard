@@ -1,0 +1,20 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}{{ file.file_name }} Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h3 class="fw-semibold mb-3">{{ file.file_name }}</h3>
+      <span class="badge bg-primary">{{ file.file_type }}</span>
+      <hr>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>📦 Size:</b> {{ file.get_file_size_display }}</li>
+        <li class="list-group-item"><b>👤 Uploaded By:</b> {{ file.uploaded_by.username }}</li>
+        <li class="list-group-item"><b>📅 Upload Date:</b> {{ file.upload_date }}</li>
+        <li class="list-group-item"><b>🕓 Last Modified:</b> {{ file.last_modified_date }}</li>
+      </ul>
+      <a href="{% url 'dashboard' %}" class="btn btn-outline-primary mt-4">← Back to File List</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

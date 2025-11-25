@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}File Analytics Dashboard{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'dashboard/css/styles.css' %}">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafc;
+      color: #222;
+    }
+    .navbar {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: #4a4aff !important;
+    }
+    .nav-link {
+      color: #333 !important;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #4a4aff !important;
+      transform: translateY(-1px);
+    }
+    main {
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+    }
+    .text-soft {
+  color: #495057 !important;  /* darker gray for better readability */
+}
+
+.text-soft a {
+  color: #4f46e5; /* purple accent links stay vibrant */
+}
+
+.text-soft a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">📊 File Analytics</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+          {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Files</a></li> {% endcomment %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log Out</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mt-5 pt-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    © 2025 File Analytics | Built with Django 🐍
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard – File Analytics{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+
+  <!-- Page Header -->
+  <div class="gradient-hero rounded-4 p-4 p-md-5 mb-4 shadow-sm d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between">
+    <div>
+      <h1 class="fw-bold mb-1">Dashboard</h1>
+      <p class="text-soft mb-0">Welcome, <span id="welcome-username">Loading…</span></p>
+    </div>
+    <div class="d-flex gap-2 mt-3 mt-md-0">
+      <button id="rescan-btn" class="btn btn-gradient">🔁 Rescan Shared Folder</button>
+    </div>
+  </div>
+  <p id="rescan-status" class="text-soft mb-4"></p>
+
+
+<!-- KPI Cards Row -->
+<div class="row g-4 mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 p-3 text-center h-100">
+      <h6 class="text-muted mb-2">Total Files</h6>
+      <h2 class="fw-bold" id="total-files-kpi">0</h2>
+      <i class="bi bi-folder-fill fs-3 text-warning"></i>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 p-3 text-center h-100">
+      <h6 class="text-muted mb-2">Total Storage Used</h6>
+      <h2 class="fw-bold" id="total-size-kpi">0 MB</h2>
+      <i class="bi bi-file-earmark-bar-graph fs-3 text-purple"></i>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Charts + Upload -->
+  <div class="row g-4 mb-4">
+    <div class="col-12 col-lg-7">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-header bg-white border-0 pt-3 pb-0">
+          <h5 class="mb-0">File Type Distribution</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="fileTypeChart" height="140"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-header bg-white border-0 pt-3 pb-0">
+          <h5 class="mb-0">Upload a New File</h5>
+        </div>
+        <div class="card-body">
+          <form id="file-upload-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="fileInput" class="form-label">Select a file</label>
+              <input class="form-control" type="file" id="fileInput" name="file" required>
+            </div>
+            <button type="submit" class="btn btn-gradient w-100">⬆ Upload</button>
+            <div id="upload-status" class="mt-2 text-soft small"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hot Files + My Team -->
+  <div class="row g-4">
+    <div class="col-12 col-lg-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-header bg-white border-0 pt-3 pb-0">
+          <h5 class="mb-0"> Hot Files</h5>
+        </div>
+        <div class="card-body">
+          <ul id="hot-files-list" class="list-unstyled m-0">
+            <li class="text-soft py-3 text-center">Loading hot files…</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-header bg-white border-0 pt-3 pb-0 d-flex align-items-center justify-content-between">
+          <h5 id="team-name-header" class="mb-0">My Team(Loading)</h5>
+          <span id="team-count" class="badge rounded-pill bg-primary-subtle text-primary-emphasis">0</span>
+        </div>
+        <div class="card-body">
+          <ul id="team-members" class="list-unstyled m-0">
+            <li class="text-soft">Loading members…</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- File List -->
+<div class="row mt-5">
+  <div class="col-12">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center pt-3 pb-2">
+        <h5 class="mb-0 fw-semibold">📄 Uploaded Files</h5>
+      </div>
+
+      <div class="card-body pt-0">
+        <div class="table-responsive">
+          <table class="table align-middle table-hover mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">File Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Size</th>
+                <th scope="col">Modified By</th>
+                <th scope="col">Modified On</th>
+                <th scope="col">Accesses</th>
+                <th scope="col" class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="files-table-body">
+              <tr>
+                <td colspan="7" class="text-center text-muted py-4">
+                  <div class="spinner-border spinner-border-sm text-primary me-2"></div>
+                  Loading files…
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit file modal -->
+<div class="modal fade" id="fileEditModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="fileEditModalTitle" class="modal-title">Edit file</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-3">
+        <div id="fileEditAlert" class="mb-2"></div>
+        <textarea id="fileEditTextarea" style="width:100%; height:400px; font-family: monospace; font-size: 0.95rem; padding:10px;"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button id="fileEditSaveBtn" class="btn btn-gradient">Save changes</button>
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="{% static 'dashboard/js/dashboard.js' %}"></script>
+{% endblock %}

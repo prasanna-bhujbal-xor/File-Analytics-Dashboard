@@ -1,0 +1,152 @@
+[
+{
+  "model": "dashboard.filemetadata",
+  "pk": 1,
+  "fields": {
+    "file_name": "load_projects.csv",
+    "file_size": 770,
+    "file_type": "csv",
+    "uploaded_by": 1,
+    "upload_date": "2025-11-08T18:43:25.440Z",
+    "last_modified_date": "2025-11-18T11:01:21.551Z",
+    "team": 1,
+    "modified_by": null,
+    "access_count": 4
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 4,
+  "fields": {
+    "file_name": "quiz-result-quiz-session.txt",
+    "file_size": 141,
+    "file_type": "txt",
+    "uploaded_by": 1,
+    "upload_date": "2025-11-08T18:43:25.444Z",
+    "last_modified_date": "2025-11-18T11:01:07.500Z",
+    "team": 1,
+    "modified_by": null,
+    "access_count": 5
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 10,
+  "fields": {
+    "file_name": "flowchart2.png",
+    "file_size": 862285,
+    "file_type": "png",
+    "uploaded_by": 1,
+    "upload_date": "2025-11-09T16:51:01.798Z",
+    "last_modified_date": "2025-10-08T14:44:40.269Z",
+    "team": 1,
+    "modified_by": null,
+    "access_count": 1
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 11,
+  "fields": {
+    "file_name": "project doc1.docx",
+    "file_size": 6190725,
+    "file_type": "docx",
+    "uploaded_by": 1,
+    "upload_date": "2025-11-09T16:51:01.808Z",
+    "last_modified_date": "2025-10-08T14:38:00.759Z",
+    "team": 1,
+    "modified_by": null,
+    "access_count": 1
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 18,
+  "fields": {
+    "file_name": "Screenshot_2025-11-07_164819_20251114062537.png",
+    "file_size": 155004,
+    "file_type": "png",
+    "uploaded_by": 1,
+    "upload_date": "2025-11-14T06:25:37.434Z",
+    "last_modified_date": "2025-11-14T11:55:37.430Z",
+    "team": 1,
+    "modified_by": null,
+    "access_count": 0
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 19,
+  "fields": {
+    "file_name": "Aadhar card.jpg",
+    "file_size": 710132,
+    "file_type": "jpg",
+    "uploaded_by": null,
+    "upload_date": "2025-11-18T05:50:41.628Z",
+    "last_modified_date": "2025-09-24T17:18:48.953Z",
+    "team": null,
+    "modified_by": null,
+    "access_count": 0
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 20,
+  "fields": {
+    "file_name": "Flowchart1.png",
+    "file_size": 843057,
+    "file_type": "png",
+    "uploaded_by": null,
+    "upload_date": "2025-11-18T05:50:41.637Z",
+    "last_modified_date": "2025-10-08T14:50:50.303Z",
+    "team": null,
+    "modified_by": null,
+    "access_count": 0
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 21,
+  "fields": {
+    "file_name": "img1.webp",
+    "file_size": 107490,
+    "file_type": "webp",
+    "uploaded_by": null,
+    "upload_date": "2025-11-18T05:50:41.643Z",
+    "last_modified_date": "2025-10-03T15:29:43.820Z",
+    "team": null,
+    "modified_by": null,
+    "access_count": 0
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 22,
+  "fields": {
+    "file_name": "Screenshot_2025-11-07_164819.png",
+    "file_size": 155004,
+    "file_type": "png",
+    "uploaded_by": null,
+    "upload_date": "2025-11-18T05:50:41.658Z",
+    "last_modified_date": "2025-11-12T11:30:12.630Z",
+    "team": null,
+    "modified_by": null,
+    "access_count": 0
+  }
+},
+{
+  "model": "dashboard.filemetadata",
+  "pk": 23,
+  "fields": {
+    "file_name": "Screenshot_2025-11-07_164819_20251112064025.png",
+    "file_size": 155004,
+    "file_type": "png",
+    "uploaded_by": null,
+    "upload_date": "2025-11-18T05:50:41.662Z",
+    "last_modified_date": "2025-11-12T12:10:25.862Z",
+    "team": null,
+    "modified_by": null,
+    "access_count": 0
+  }
+}
+]

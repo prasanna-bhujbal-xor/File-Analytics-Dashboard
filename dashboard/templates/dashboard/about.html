@@ -1,0 +1,20 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}About - File Analytics{% endblock %}
+{% block content %}
+<div class="text-center py-4">
+  <h2 class="fw-bold text-primary mb-3">About This Project</h2>
+  <div class="card shadow-sm mx-auto" style="max-width: 700px;">
+    <div class="card-body p-4">
+      <p class="text-secondary">
+        This web application demonstrates Django-based file analytics.
+      </p>
+      <p class="text-secondary">
+        Users can upload files to a shared repository, where the system extracts metadata such as name, type, size, and modification date for visual analysis.
+      </p>
+      <p class="text-secondary">
+        Our goal is to provide a simple yet intelligent dashboard for file management and insights.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

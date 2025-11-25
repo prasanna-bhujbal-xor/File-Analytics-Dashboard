@@ -1,0 +1,85 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Home - File Analytics{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <!-- Hero Section -->
+  <section class="text-center mb-5">
+    <h1 class="fw-bold display-5 text-primary mb-3">
+      File Analytics Dashboard
+    </h1>
+    <p class="lead text-soft w-75 mx-auto">
+      Upload, organize, and analyze files effortlessly. Get insights and manage your shared repository with a sleek, intelligent interface.
+    </p>
+    <a href="{% url 'dashboard' %}" class="btn btn-gradient btn-lg mt-3">
+      🚀 Go to Dashboard
+    </a>
+  </section>
+
+  <!-- Analytics Overview Section -->
+  <section class="row text-center g-4 mt-5">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm py-4">
+        <div class="card-body">
+          <div class="fs-2 mb-2 text-primary">📂</div>
+          <h5 class="fw-semibold mb-1">Upload Files</h5>
+          <p class="text-soft mb-0">Easily add new files for instant processing and metadata extraction.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm py-4">
+        <div class="card-body">
+          <div class="fs-2 mb-2 text-success">📊</div>
+          <h5 class="fw-semibold mb-1">Analyze Metadata</h5>
+          <p class="text-soft mb-0">View structured information like file type, size, and modification history.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm py-4">
+        <div class="card-body">
+          <div class="fs-2 mb-2 text-warning">💡</div>
+          <h5 class="fw-semibold mb-1">Gain Insights</h5>
+          <p class="text-soft mb-0">Monitor trends and manage shared data efficiently through analytics visuals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="text-center mt-5 py-5 bg-gradient rounded-4 text-white shadow-sm">
+    <h2 class="fw-bold mb-3">Start Exploring Your Data Today!</h2>
+    <p class="text-muted">Empower your team with simple, insightful file analytics.</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-light fw-semibold px-4 py-2">
+      View Uploaded Files
+    </a>
+  </section>
+</div>
+
+<!-- Extra CSS -->
+<style>
+  .btn-gradient {
+    background: linear-gradient(90deg, #6366f1, #4f46e5);
+    color: #fff;
+    border: none;
+    transition: 0.3s ease;
+  }
+  .btn-gradient:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  .bg-gradient {
+    background: linear-gradient(120deg, #818cf8, #a78bfa);
+  }
+  .card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+</style>
+{% endblock %}
